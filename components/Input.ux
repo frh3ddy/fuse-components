@@ -1,0 +1,27 @@
+<Panel ux:Class='InputText' Alignment='VerticalCenter' Margin='10' Height='50' HitTestMode='LocalBounds'>
+    <string ux:Property='LabelText'/>
+    <JavaScript File='../.js-compiled/Input.js'/>
+    <Clicked>
+        <GiveFocus Target='input'/>
+    </Clicked>
+    <Rectangle Color='#fafafa' Layer='Background' CornerRadius='7'>
+        <Stroke Width='1' Color='#252526' />
+    </Rectangle>
+    <Text ux:Name='label' Value='{ReadProperty LabelText}' TextColor='#0078cf' Margin='10, 0'
+    TransformOrigin='TopLeft' 
+    Alignment='VerticalCenter'>
+        <WhileTrue Value='{isInputFocused}'>
+            <Change labelScale.Factor='.75' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+            <Move Y='-10' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+        </WhileTrue>
+        <Scaling ux:Name='labelScale' Factor='1' />
+    </Text>
+    <TextInput ux:Name='input' Value='{inputValue}' Alignment='Bottom' Margin='10,0,10,5'>
+        <WhileFocused>
+            <Callback Handler="{focusInput}" />
+        </WhileFocused>
+        <WhileNotFocused>
+            <Callback Handler='{logic}'/>
+        </WhileNotFocused>
+    </TextInput>
+</Panel>

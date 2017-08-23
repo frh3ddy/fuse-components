@@ -1,21 +1,10 @@
 <App>
-<JavaScript File="./.js-compiled/MainView.js" />
-    <Panel Alignment='VerticalCenter' Margin='10' Height='50' HitTestMode='LocalBounds'>
-        <Clicked Handler='{focusInput}'>
-            <GiveFocus Target='input' Delay='.3'/>
-        </Clicked>
-        <Rectangle Color='#fafafa' Layer='Background' CornerRadius='7'>
-            <Stroke Width='1' Color='#252526' />
-        </Rectangle>
-        <Text ux:Name='label' Value='CUSTOMER NAME' TextColor='#0078cf' Margin='10, 0'
-        TransformOrigin='TopLeft' 
-        Alignment='VerticalCenter'>
-            <WhileTrue Value='{isInputFocused}'>
-                <Change labelScale.Factor='.75' Duration='.3' Easing='BounceOut'/>
-                <Move Y='-10' Duration='.3' Easing='BounceOut '/>
-            </WhileTrue>
-            <Scaling ux:Name='labelScale' Factor='1' />
-        </Text>
-        <TextInput ux:Name='input' Alignment='Bottom' Margin='10,0,10,5'/>
-    </Panel>
+    <JavaScript File="./.js-compiled/MainView.js" />
+    <StackPanel>
+        <InputText LabelText='CUSTOMER NAME'/>
+        <InputText LabelText='PHONE NUMBER'/>
+        <InputText LabelText='DEVICE PASSWORD'/>
+        <InputText LabelText='REPAIR COST'/>
+        <InputText LabelText='TECH NOTES'/>
+    </StackPanel>
 </App>
