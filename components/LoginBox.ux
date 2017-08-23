@@ -1,0 +1,19 @@
+<StackPanel ux:Class='LoginBox' ux:Name='log' Opacity='1' Alignment='VerticalCenter' Margin='20, 0, 20, 0'>
+    <AddingAnimation>
+        <Move Y="200" Duration="1.5" Easing="ExponentialInOut"/>
+        <Change log.Opacity='0' Duration=".8" />
+    </AddingAnimation>
+    <TextInput AutoCorrectHint='Disabled' Value='{username}' TextColor="#15191e" TextWrapping="Wrap" Padding="20, 20, 20, 20" PlaceholderText=" username" PlaceholderColor="#b9b9b9">
+        <Rectangle CornerRadius="5" Margin="-10">
+            <SolidColor Color="#f2f2f2" />
+        </Rectangle>
+    </TextInput>
+    <TextInput IsPassword='True' Value='{password}' TextColor="#15191e" TextWrapping="Wrap" Padding="20, 10, 20, 20" PlaceholderText=" password" PlaceholderColor="#b9b9b9">
+        <Rectangle CornerRadius="5" Margin="-10">
+            <SolidColor Color="#f2f2f2" />
+        </Rectangle>
+    </TextInput>
+    <MyButton Alignment='Top' Text="Login" TextColor='#fff' 
+    Margin='10'
+    Clicked='{login}' BGColor='#1182ff'/>
+</StackPanel>

@@ -1,0 +1,4 @@
+<StackPanel Alignment='VerticalCenter'>
+        <TextInput MaxLength='14' InputHint='Phone' Margin='10, 0' Value='{phoneNumber}' Alignment='VerticalCenter' TextColor='#fff' PlaceholderColor='#fff' PlaceholderText='Enter phone number'/>
+        <TextInput MaxLength='7' InputHint='Decimal' Margin='10, 0' Value='{price}' Alignment='VerticalCenter' TextColor='#fff' PlaceholderColor='#fff' PlaceholderText='Enter price'/>
+</StackPanel>

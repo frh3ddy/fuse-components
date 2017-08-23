@@ -4,8 +4,8 @@
     <Clicked>
         <GiveFocus Target='input'/>
     </Clicked>
-    <Rectangle Color='#fafafa' Layer='Background' CornerRadius='7'>
-        <Stroke Width='1' Color='#252526' />
+    <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
+        <Stroke Width='1' Color='#f1f0f0' />
     </Rectangle>
     <Text ux:Name='label' Value='{ReadProperty LabelText}' TextColor='#0078cf' Margin='10, 0'
     TransformOrigin='TopLeft' 

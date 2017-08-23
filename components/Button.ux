@@ -1,0 +1,10 @@
+<Panel ux:Class="MyButton" HitTestMode="LocalBounds" Margin="4" BGColor="#25a" Opacity="1">
+    <string ux:Property="Text" />
+    <string ux:Property="TextColor" />
+    <string ux:Property="BGColor" />
+    <Text Value="{ReadProperty Text}" Color="{ReadProperty TextColor}" Alignment="Center" Margin="30,15" />
+    <Rectangle CornerRadius="5" Layer="Background" Color='{ReadProperty BGColor}'/>
+    <WhilePressed>
+        <Change this.BGColor="#138" Duration="0.05" DurationBack=".2" />
+    </WhilePressed>
+</Panel>
