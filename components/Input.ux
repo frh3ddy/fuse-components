@@ -1,22 +1,7 @@
-<Panel ux:Class='InputText' Alignment='VerticalCenter' Margin='10' Height='50' HitTestMode='LocalBounds'>
+<Panel ux:Class='InputText' Alignment='VerticalCenter' Margin='10' Height='50'>
     <string ux:Property='LabelText'/>
     <JavaScript File='../.js-compiled/Input.js'/>
-    <Clicked>
-        <GiveFocus Target='input'/>
-    </Clicked>
-    <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
-        <Stroke Width='1' Color='#f1f0f0' />
-    </Rectangle>
-    <Text ux:Name='label' Value='{ReadProperty LabelText}' TextColor='#0078cf' Margin='10, 0'
-    TransformOrigin='TopLeft' 
-    Alignment='VerticalCenter'>
-        <WhileTrue Value='{isInputFocused}'>
-            <Change labelScale.Factor='.75' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
-            <Move Y='-10' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
-        </WhileTrue>
-        <Scaling ux:Name='labelScale' Factor='1' />
-    </Text>
-    <TextInput ux:Name='input' Value='{inputValue}' Alignment='Bottom' Margin='10,0,10,5'>
+    <TextInput ux:Name='input' Font='Regular' Value='{inputValue}' Margin='10,0,10,0' Padding='0, 25, 0, 5'>
         <WhileFocused>
             <Callback Handler="{focusInput}" />
         </WhileFocused>
@@ -24,4 +9,16 @@
             <Callback Handler='{logic}'/>
         </WhileNotFocused>
     </TextInput>
+    <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
+        <Stroke Width='1' Color='#f1f0f0' />
+    </Rectangle>
+    <Text ux:Name='label' Value='{ReadProperty LabelText}' TextColor='#0078cf' Margin='10, 0'
+    TransformOrigin='TopLeft' 
+    Alignment='VerticalCenter'>
+        <WhileTrue Value='{isInputFocused}'>
+            <Change labelScale.Factor='.70' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+            <Move Y='-10' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+        </WhileTrue>
+        <Scaling ux:Name='labelScale' Factor='1' />
+    </Text>
 </Panel>
