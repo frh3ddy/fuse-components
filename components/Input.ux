@@ -1,6 +1,12 @@
 <Panel ux:Class='InputText' Alignment='VerticalCenter' Margin='10' Height='50'>
+    <object ux:Property='InputObsevable'/>
     <string ux:Property='LabelText'/>
-    <JavaScript File='../.js-compiled/Input.js'/>
+    <JavaScript>
+        module.exports ={
+            foo: this.InputObsevable.innerTwoWay()
+        }
+    </JavaScript>
+    <JavaScript File='../.js-compiled/Input.js'  dep:foo="{foo}"/>
     <TextInput ux:Name='input' Font='Regular' Value='{inputValue}' Margin='10,0,10,0' Padding='0, 25, 0, 5'>
         <WhileFocused>
             <Callback Handler="{focusInput}" />

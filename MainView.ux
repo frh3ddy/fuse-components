@@ -1,8 +1,7 @@
 <App>
     <JavaScript File="./.js-compiled/MainView.js" />
     <StackPanel>
-        <InputText LabelText='CUSTOMER NAME'/>
-        <InputText LabelText='CUSTOMER NAME'/>
-        <InputText LabelText='CUSTOMER NAME'/>
+        <InputText InputObsevable='{phoneNumber}' LabelText='CUSTOMER NAME'/>
+        <Text>{phoneNumber} dd</Text>
     </StackPanel>
 </App>

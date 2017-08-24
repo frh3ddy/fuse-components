@@ -18,6 +18,7 @@ function handleFormatting (observable, TEMPLATE) {
       if (lastFormattedValue) {
         // check if the value is actually different, to prevent a possible infinite loop
         if (value !== lastFormattedValue) {
+          console.log('run only once in every edit')
           formatValue(value)
         }
       } else {
