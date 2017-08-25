@@ -1,7 +1,7 @@
 import Observable from 'FuseJS/Observable'
 
 export const isInputFocused = Observable(false)
-export const inputValue = foo
+export const inputValue = Observable('')
 
 export function logic () {
   console.log(foo.value)
