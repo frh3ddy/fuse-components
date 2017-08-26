@@ -14,10 +14,14 @@ export function showPicker () {
   showing.value = true
 }
 
+export function handleSelected () {
+    showing.value = false
+}
+
 selected.onValueChanged(module, value => {
-  console.log(value)
-  if (value === '') return
-  showing.value = false
+//   console.log(value)
+//   if (value === '') return
+//   showing.value = false
 })
 
 handleFormatting(phoneNumber, '(xxx) xxx-xxxx')

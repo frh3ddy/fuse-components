@@ -8,9 +8,14 @@
     </StackPanel> -->
     <Panel ux:Class='Brand' Height='50' NameV='p' HitTestMode='LocalBounds'>
         <string ux:Property='NameV'/>
-        <Tapped>
+        <Clicked>
             <ToggleSelection/>
-        </Tapped>
+        </Clicked>
+        <WhileSelected>
+            <Translation X='20'/>
+            <Callback Handler='{handleSelected}'/>
+        </WhileSelected>
+
         <Selectable Value='{ReadProperty NameV}'/>
         <Text Alignment='Center' Value='{ReadProperty NameV}' Margin='0, 0, 20, 0'/>
     </Panel>
@@ -22,15 +27,15 @@
     <Panel HitTestMode='LocalBounds'/>
     <WhileTrue ux:Name='test' Value='{showing}'>
         <BringToFront Target="Picker" />
-        <Move Target='Picker' Y="-200" Duration="1" Easing="BackOut" EasingBack='BackIn'/>
-        <Change Picker.Opacity='1'  Duration="0" DurationBack='.5' DelayBack='.2'/>
+        <Move Target='Picker' Y="-200" Duration=".35" Easing="BackOut" EasingBack='BackIn'/>
+        <Change Picker.Opacity='1'  Duration="0" DurationBack='.2'/>
     </WhileTrue>
     <Panel Alignment='Center' ux:Name='Picker' Width='200' Height='300' Opacity='0' Y='200'>
         <!-- <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" /> -->
         <Mask File="BGMask.png" Mode='Grayscale'/>
         <ScrollView Background='White'>
             <StackPanel>
-                <Selection Value='{selected}' MaxCount='1'/>
+                <Selection Value='{selected}' MaxCount='1' MinCount='1'/>
                 <Brand NameV='Apple'/>
                 <Brand NameV='Samsung'/>
                 <Brand NameV='Sony'/>
