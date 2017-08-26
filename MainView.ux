@@ -6,51 +6,42 @@
         <InputText InputObsevable='{devicePassword}' LabelText='DEVICE PASSWORD'/>
         <InputText InputObsevable='{price}' LabelText='DIAGNOSTIC FEE' InputHint='Number'/>
     </StackPanel> -->
-    <Panel Alignment='Center' ux:Name='Picker' Width='200' Height='300'>
-    <!-- <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" /> -->
-    <AddingAnimation>
-        <Move Y="200" Duration="1.5" Easing="ExponentialInOut"/>
-        <Change Picker.Opacity='0' Duration=".8" />
-    </AddingAnimation>
-       <Mask File="BGMask.png" Mode='Grayscale'/>
+    <Panel ux:Class='Brand' Height='50' NameV='p' HitTestMode='LocalBounds'>
+        <string ux:Property='NameV'/>
+        <Tapped>
+            <ToggleSelection/>
+        </Tapped>
+        <Selectable Value='{ReadProperty NameV}'/>
+        <Text Alignment='Center' Value='{ReadProperty NameV}' Margin='0, 0, 20, 0'/>
+    </Panel>
+    <Button Text='show Picker' Alignment='Center' Margin='10,0,10,50'>
+        <Clicked>
+            <Set test.Value='true'/>
+        </Clicked>
+    </Button>
+    <Panel HitTestMode='LocalBounds'/>
+    <WhileTrue ux:Name='test' Value='{showing}'>
+        <BringToFront Target="Picker" />
+        <Move Target='Picker' Y="-200" Duration="1" Easing="BackOut" EasingBack='BackIn'/>
+        <Change Picker.Opacity='1'  Duration="0" DurationBack='.5' DelayBack='.2'/>
+    </WhileTrue>
+    <Panel Alignment='Center' ux:Name='Picker' Width='200' Height='300' Opacity='0' Y='200'>
+        <!-- <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" /> -->
+        <Mask File="BGMask.png" Mode='Grayscale'/>
         <ScrollView Background='White'>
-        <StackPanel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Apple</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-                
-            </Panel>
-            <Panel Height='50' Color='White'>
-                <Text Alignment='Center'>Samsung</Text>
-            </Panel>
-        </StackPanel>
-    </ScrollView>
+            <StackPanel>
+                <Selection Value='{selected}' MaxCount='1'/>
+                <Brand NameV='Apple'/>
+                <Brand NameV='Samsung'/>
+                <Brand NameV='Sony'/>
+                <Brand NameV='Acer'/>
+                <Brand NameV='Toshiba'/>
+                <Brand NameV='Asus'/>
+                <Brand NameV='HP'/>
+                <Brand NameV='Dell'/>
+                <Brand NameV='Lenovo'/>
+                <Brand NameV='IBM'/>
+            </StackPanel>
+        </ScrollView>
     </Panel>
 </App>
