@@ -1,4 +1,4 @@
-<App>
+<App Background='#1e1e1e'>
     <JavaScript File="./.js-compiled/MainView.js" />
     <!-- <StackPanel>
         <InputText InputObsevable='{customerName}' LabelText='CUSTOMER NAME' AutoCapitalizationHint='Words'/>
@@ -6,9 +6,12 @@
         <InputText InputObsevable='{devicePassword}' LabelText='DEVICE PASSWORD'/>
         <InputText InputObsevable='{price}' LabelText='DIAGNOSTIC FEE' InputHint='Number'/>
     </StackPanel> -->
-
-    <Panel Alignment='Center'  Width='200' Height='300'>
-    <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" />
+    <Panel Alignment='Center' ux:Name='Picker' Width='200' Height='300'>
+    <!-- <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" /> -->
+    <AddingAnimation>
+        <Move Y="200" Duration="1.5" Easing="ExponentialInOut"/>
+        <Change Picker.Opacity='0' Duration=".8" />
+    </AddingAnimation>
        <Mask File="BGMask.png" Mode='Grayscale'/>
         <ScrollView Background='White'>
         <StackPanel>
