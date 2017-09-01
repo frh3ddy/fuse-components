@@ -7,22 +7,6 @@ export var customerName = Observable('')
 export var devicePassword = Observable('')
 export var phoneNumber = Observable('')
 export var price = Observable('')
-export var showing = Observable(true)
-
-export const selected = Observable('')
-export function showPicker () {
-  showing.value = true
-}
-
-export function handleSelected () {
-    showing.value = false
-}
-
-selected.onValueChanged(module, value => {
-//   console.log(value)
-//   if (value === '') return
-//   showing.value = false
-})
 
 handleFormatting(phoneNumber, '(xxx) xxx-xxxx')
 handleFormatting(price, '$xxx.xx')

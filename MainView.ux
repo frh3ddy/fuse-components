@@ -1,4 +1,5 @@
-<App Background='#1e1e1e'>
+<App>
+    <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
     <!-- <StackPanel>
         <InputText InputObsevable='{customerName}' LabelText='CUSTOMER NAME' AutoCapitalizationHint='Words'/>
@@ -6,47 +7,79 @@
         <InputText InputObsevable='{devicePassword}' LabelText='DEVICE PASSWORD'/>
         <InputText InputObsevable='{price}' LabelText='DIAGNOSTIC FEE' InputHint='Number'/>
     </StackPanel> -->
-    <Panel ux:Class='Brand' Height='50' NameV='p' HitTestMode='LocalBounds'>
-        <string ux:Property='NameV'/>
-        <Clicked>
-            <ToggleSelection/>
-        </Clicked>
-        <WhileSelected>
-            <Translation X='20'/>
-            <Callback Handler='{handleSelected}'/>
-        </WhileSelected>
+    <Panel ux:Name='dede'/>
+    <Panel ux:Class='PickerInput' Alignment='VerticalCenter' Margin='10' Height='50'>
+        <Visual ux:Dependency="navBar" />
+        <!-- <object ux:Property="Options" /> -->
+        <JavaScript>
+            var Observable = require('FuseJS/Observable')
+            var selected = Observable('')
+            var showOptions = Observable(false)
+            var options = [
+                {option: 'Acer'},
+                {option: 'Apple'},
+                {option: 'Asus'},
+                {option: 'Dell'},
+                {option: 'HP'},
+                {option: 'Lenovo'},
+                {option: 'Samsung'},
+                {option: 'Sony'},
+                {option: 'Toshiba'},
+                {option: 'Gateway'},
+                {option: 'Compaq'},
+                {option: 'Alienware'},
+                {option: 'IBM'}
+            ]
 
-        <Selectable Value='{ReadProperty NameV}'/>
-        <Text Alignment='Center' Value='{ReadProperty NameV}' Margin='0, 0, 20, 0'/>
-    </Panel>
-    <Button Text='show Picker' Alignment='Center' Margin='10,0,10,50'>
+            selected.onValueChanged(module, function(value) {
+                if(value === '') return
+                showOptions.value = false
+            })
+
+            module.exports = {
+                selected: selected,
+                showOptions: showOptions,
+                options: options
+            }
+        </JavaScript>
         <Clicked>
-            <Set test.Value='true'/>
+            <Set optionsContainer.Value='true'/>
         </Clicked>
-    </Button>
-    <Panel HitTestMode='LocalBounds'/>
-    <WhileTrue ux:Name='test' Value='{showing}'>
-        <BringToFront Target="Picker" />
-        <Move Target='Picker' Y="-200" Duration=".35" Easing="BackOut" EasingBack='BackIn'/>
-        <Change Picker.Opacity='1'  Duration="0" DurationBack='.2'/>
-    </WhileTrue>
-    <Panel Alignment='Center' ux:Name='Picker' Width='200' Height='300' Opacity='0' Y='200'>
-        <!-- <DropShadow Size="4" Distance="0" Spread="0.10" Color="#0008" Angle="360" /> -->
-        <Mask File="BGMask.png" Mode='Grayscale'/>
-        <ScrollView Background='White'>
-            <StackPanel>
-                <Selection Value='{selected}' MaxCount='1' MinCount='1'/>
-                <Brand NameV='Apple'/>
-                <Brand NameV='Samsung'/>
-                <Brand NameV='Sony'/>
-                <Brand NameV='Acer'/>
-                <Brand NameV='Toshiba'/>
-                <Brand NameV='Asus'/>
-                <Brand NameV='HP'/>
-                <Brand NameV='Dell'/>
-                <Brand NameV='Lenovo'/>
-                <Brand NameV='IBM'/>
-            </StackPanel>
-        </ScrollView>
+
+        <AlternateRoot ParentNode="navBar">
+            <Picker ux:Name='pik' Selected='{selected}' Options='{options}' Showing='false'/>
+        </AlternateRoot>
+
+        <WhileTrue ux:Name='optionsContainer' Value='{showOptions}'>
+            <Change holo.Opacity='.4' Duration='.2'/>
+            <Change pik.Showing='true'/>
+            <AlternateRoot ParentNode="navBar">
+                <Panel Opacity='0' Color='#000' ux:Name='holo'>
+                    <Tapped>
+                        <Set optionsContainer.Value='false' />
+                    </Tapped>
+                </Panel>
+            </AlternateRoot>
+        </WhileTrue>
+
+        <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
+            <Stroke Width='1' Color='#cecece' />
+        </Rectangle>
+        <Image File='chevron-down@3x.png' Alignment='Right' Color='#0078cf' Width='20' Margin='0,0,20,0'/>
+        <Text ux:Name='label' Value='DEVICE BRAND' TextColor='#0078cf' Margin='10, 0'
+        TransformOrigin='TopLeft' 
+        Alignment='VerticalCenter'>
+            <WhileTrue ux:Name='labelBool'>
+                <Change labelScale.Factor='.70' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+                <Move Y='-10' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
+            </WhileTrue>
+            <Scaling ux:Name='labelScale' Factor='1' />
+        </Text>
+        <Text Value='{selected}' Alignment='Bottom' Margin='10, 0, 0, 5'>
+            <WhileContainsText>
+                <Change labelBool.Value='true'/>
+            </WhileContainsText>
+        </Text>
     </Panel>
+    <PickerInput navBar='dede'/>
 </App>
