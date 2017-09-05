@@ -7,6 +7,22 @@ export var customerName = Observable('')
 export var devicePassword = Observable('')
 export var phoneNumber = Observable('')
 export var price = Observable('')
+export const selected = Observable('')
+export const options = [
+  'Acer',
+  'Apple',
+  'Asus',
+  'Dell',
+  'HP',
+  'Lenovo',
+  'Samsung',
+  'Sony',
+  'Toshiba',
+  'Gateway',
+  'Compaq',
+  'Alienware',
+  'IBM'
+]
 
 handleFormatting(phoneNumber, '(xxx) xxx-xxxx')
 handleFormatting(price, '$xxx.xx')

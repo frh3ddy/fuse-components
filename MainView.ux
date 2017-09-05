@@ -1,85 +1,12 @@
 <App>
     <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
-    <!-- <StackPanel>
+    <Panel ux:Name='pickerOutlet'/>
+    <StackPanel>
         <InputText InputObsevable='{customerName}' LabelText='CUSTOMER NAME' AutoCapitalizationHint='Words'/>
         <InputText InputObsevable='{phoneNumber}' LabelText='PHONE #' InputHint='Phone' MaxLength='14'/>
+        <Picker outlet='pickerOutlet' Options='{options}' Selected='{selected}' Margin='10'/>
         <InputText InputObsevable='{devicePassword}' LabelText='DEVICE PASSWORD'/>
         <InputText InputObsevable='{price}' LabelText='DIAGNOSTIC FEE' InputHint='Number'/>
-    </StackPanel> -->
-    <Panel ux:Name='dede'/>
-    <Panel ux:Class='PickerInput' Alignment='VerticalCenter' Margin='10' Height='50'>
-        <Visual ux:Dependency="navBar" />
-        <!-- <object ux:Property="Options" /> -->
-        <JavaScript>
-            var Observable = require('FuseJS/Observable')
-            var selected = Observable('')
-            var showOptions = Observable(false)
-            var options = [
-                {option: 'Acer'},
-                {option: 'Apple'},
-                {option: 'Asus'},
-                {option: 'Dell'},
-                {option: 'HP'},
-                {option: 'Lenovo'},
-                {option: 'Samsung'},
-                {option: 'Sony'},
-                {option: 'Toshiba'},
-                {option: 'Gateway'},
-                {option: 'Compaq'},
-                {option: 'Alienware'},
-                {option: 'IBM'}
-            ]
-
-            selected.onValueChanged(module, function(value) {
-                if(value === '') return
-                showOptions.value = false
-            })
-
-            module.exports = {
-                selected: selected,
-                showOptions: showOptions,
-                options: options
-            }
-        </JavaScript>
-        <Clicked>
-            <Set optionsContainer.Value='true'/>
-        </Clicked>
-
-        <AlternateRoot ParentNode="navBar">
-            <Picker ux:Name='pik' Selected='{selected}' Options='{options}' Showing='false'/>
-        </AlternateRoot>
-
-        <WhileTrue ux:Name='optionsContainer' Value='{showOptions}'>
-            <Change holo.Opacity='.4' Duration='.2'/>
-            <Change pik.Showing='true'/>
-            <AlternateRoot ParentNode="navBar">
-                <Panel Opacity='0' Color='#000' ux:Name='holo'>
-                    <Tapped>
-                        <Set optionsContainer.Value='false' />
-                    </Tapped>
-                </Panel>
-            </AlternateRoot>
-        </WhileTrue>
-
-        <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
-            <Stroke Width='1' Color='#cecece' />
-        </Rectangle>
-        <Image File='chevron-down@3x.png' Alignment='Right' Color='#0078cf' Width='20' Margin='0,0,20,0'/>
-        <Text ux:Name='label' Value='DEVICE BRAND' TextColor='#0078cf' Margin='10, 0'
-        TransformOrigin='TopLeft' 
-        Alignment='VerticalCenter'>
-            <WhileTrue ux:Name='labelBool'>
-                <Change labelScale.Factor='.70' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
-                <Move Y='-10' Duration='.3' Easing='BounceOut' EasingBack='BounceIn'/>
-            </WhileTrue>
-            <Scaling ux:Name='labelScale' Factor='1' />
-        </Text>
-        <Text Value='{selected}' Alignment='Bottom' Margin='10, 0, 0, 5'>
-            <WhileContainsText>
-                <Change labelBool.Value='true'/>
-            </WhileContainsText>
-        </Text>
-    </Panel>
-    <PickerInput navBar='dede'/>
+    </StackPanel>
 </App>
