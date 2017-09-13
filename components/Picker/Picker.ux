@@ -2,6 +2,7 @@
         <Visual ux:Dependency="outlet" />
         <object ux:Property="Options" />
         <object ux:Property="Selected" />
+        <string ux:Property="Label"/>
         <JavaScript>
             var Observable = require('FuseJS/Observable')
             var selected = this.Selected.innerTwoWay()
@@ -40,10 +41,10 @@
         </WhileTrue>
 
         <Rectangle Color='#fff' Layer='Background' CornerRadius='5'>
-            <Stroke Width='1' Color='#cecece' />
+            <Stroke Width='1' Color='#f1f0f0' />
         </Rectangle>
-        <Image File='../../chevron-down@3x.png' Alignment='Right' Color='#0078cf' Width='20' Margin='0,0,20,0'/>
-        <Text ux:Name='label' Value='DEVICE BRAND' TextColor='#0078cf' Margin='10, 0'
+        <Image File='../../chevron-down@3x.png' Alignment='Right' Color='#f1f0f0' Width='20' Margin='0,0,20,0'/>
+        <Text ux:Name='label' Value='{ReadProperty Label}' TextColor='#0078cf' Margin='10, 0'
         TransformOrigin='TopLeft' 
         Alignment='VerticalCenter'>
             <WhileTrue ux:Name='labelBool'>
