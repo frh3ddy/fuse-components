@@ -1,7 +1,25 @@
 <App>
     <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
-    <Panel Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
+    <Panel Height='200' Margin='10, 0' Padding='25'>
+        <Image File='bg.jpg' StretchMode='UniformToFill' Layer='Background' ContentAlignment='Top'/>
+        <StackPanel>
+            <Panel>
+                <Circle Width='30' Height='30' Color='#fff' Alignment='Left'/>
+                <StackPanel Margin='40,0,0,0'>
+                    <Text Color='#fff' Value='Mikes Pizza Rest,LLC.' FontSize='14'/>
+                    <Text Color='#ccc' Value='S384263949939' FontSize='10'/>
+                </StackPanel>
+            </Panel>
+            <Text Color='#fff' Value='TOTAL AMOUNT PAID TO DATE' Margin='0,20,0,10'/>
+            <Text Color='#fff' Value='$43,785.00' FontSize='32'/>
+        </StackPanel>
+        <Rectangle Color='#fff' Width='90%' Height='40' Alignment='Bottom' CornerRadius='50' Y='35'>
+            <Shadow Size="10" />
+            <Text Value='COMPLETITION DATE' Alignment='CenterLeft' Margin='30, 0' FontSize='10'/>
+        </Rectangle>
+    </Panel>
+    <!-- <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
         <Rectangle Layer='Background' Color='#fff' CornerRadius='10'/>
         <Shadow Size="10" />
         <Clicked>
@@ -14,6 +32,7 @@
             <Change  signScale.Factor='1' Duration='.5' Easing='QuarticOut' EasingBack='QuarticIn'/>
         </WhileTrue>
         <Scaling ux:Name='signScale' Factor='.9'/>
+        
         <StackPanel>
             <Text Margin='20, 30, 20, 20' FontSize='22'>SIGN IN</Text>
             <Text Margin='20, 20, 20, 5' FontSize='11'>EMAIL</Text>
@@ -29,10 +48,20 @@
                 </StackPanel>
             </Rectangle>
             <Text Color='#4577ff' Value='Forgot password?' Alignment='Right' FontSize='12' Margin='0,20,20,0'/>
+            <Text Margin='30' FontSize='16' Alignment='Center' Color='#2937d9'>
+                <Clicked>
+                    <Set signIn.Visibility='Collapsed'/>
+                    <Set createNew.Visibility='Collapsed'/>
+                    <Set loadingCondition.Value='true'/>
+                    <Set loadingCondition.Value='false' Delay='1.4'/>
+                    <Set finishLoading.Value='true' Delay='1.4'/>
+                </Clicked>
+                SIGN IN
+            </Text>
         </StackPanel>
     </Panel>
 
-    <Panel Height='370' Margin='15, 150, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
+    <Panel ux:Name='createNew' Height='370' Margin='15, 150, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
         <Shadow Size="10" />
         <Clicked>
             <Set createHeader.Opacity='0'/>
@@ -70,6 +99,16 @@
             </Rectangle>
         </StackPanel>
     </Panel>
+    <Circle  ux:Name="loading" Width="70%" Color='#fff'>
+        <DropShadow Size="15" Distance="10" Spread="0.01" Color="#0008" Angle="90" />
+        <Scaling ux:Name='loadingScale' Factor='1'/>
+        <WhileTrue ux:Name='loadingCondition' Value='false'>
+            <Cycle Target="loading.Width" Low="30" High="80" Frequency=".9" ProgressOffset='1'/>
+        </WhileTrue >
+        <WhileTrue ux:Name='finishLoading' Value='false'>
+            <Change loadingScale.Factor='3' Duration='.5'/>
+        </WhileTrue>
+    </Circle>
 
-    <Image File='bg.jpg' StretchMode='Fill'/>
+    <Image File='bg.jpg' StretchMode='Fill'/> -->
 </App>
