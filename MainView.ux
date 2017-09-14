@@ -1,6 +1,7 @@
 <App>
     <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
+    <StackPanel>
     <Panel Height='200' Margin='10, 0' Padding='25'>
         <Image File='bg.jpg' StretchMode='UniformToFill' Layer='Background' ContentAlignment='Top'/>
         <StackPanel>
@@ -11,14 +12,44 @@
                     <Text Color='#ccc' Value='S384263949939' FontSize='10'/>
                 </StackPanel>
             </Panel>
-            <Text Color='#fff' Value='TOTAL AMOUNT PAID TO DATE' Margin='0,20,0,10'/>
+            <Text Color='#fff' Value='TOTAL AMOUNT PAID TO DATE' FontSize='14' Margin='0,20,0,10'/>
             <Text Color='#fff' Value='$43,785.00' FontSize='32'/>
         </StackPanel>
         <Rectangle Color='#fff' Width='90%' Height='40' Alignment='Bottom' CornerRadius='50' Y='35'>
             <Shadow Size="10" />
-            <Text Value='COMPLETITION DATE' Alignment='CenterLeft' Margin='30, 0' FontSize='10'/>
+            <Text Value='COMPLETION DATE' Alignment='CenterLeft' Margin='30, 0' FontSize='11'/>
+            <Text Value='04.10.2017' Alignment='CenterRight' Margin='0,0,30,0' FontSize='11' Font='Bold'/>
         </Rectangle>
     </Panel>
+
+    <Grid RowCount="1" ColumnCount="3" CellSpacing='10' Margin='10,50,10,0' Height='65'>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$3500.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='AMOUNT FUNDED' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#83dbd2" />
+                <GradientStop Offset="1" Color="#62d0b9" />
+            </LinearGradient>
+        </Rectangle>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$3,70.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='BALANCE' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#c88ffe" />
+                <GradientStop Offset="1" Color="#8666f1" />
+            </LinearGradient>
+        </Rectangle>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$48,50.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='PAYBACK AMOUNT' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#fbab99" />
+                <GradientStop Offset="1" Color="#f17a8f" />
+            </LinearGradient>
+        </Rectangle>
+    </Grid>
+    </StackPanel>
+
     <!-- <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
         <Rectangle Layer='Background' Color='#fff' CornerRadius='10'/>
         <Shadow Size="10" />
