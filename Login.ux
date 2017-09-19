@@ -1,25 +1,5 @@
-<App>
-    <FileImageSource ux:Global="checkMark" File="check@3x.png" />
-    <JavaScript File="./.js-compiled/MainView.js" />
-    <Panel Alignment='Bottom' Color='#fff' Height='49'>
-        <Grid RowCount="1" ColumnCount="5">
-            <Image File='rotate-ccw@3x.png' Color='#489afa' Height='20'/>
-            <Image File='file@3x.png' Color='#bbbbca' Height='20'/>
-            <Circle ux:Name='Add' Color='#489afa' Padding='15'>
-                <Stroke Width='1' Color='#fff'/>
-                <DropShadow Size="15" Distance="7" Spread="0.01" Color="#bbbbca" Angle="90" />
-                <Translation Y='0 - height(Add) / 3'/>
-                <Image File='plus@3x.png'/>
-            </Circle>
-            <Image File='message@3x.png' Color='#bbbbca' Height='20'/>
-            <Image File='settings@3x.png' Color='#bbbbca' Height='22'/>
-        </Grid>
-        <Rectangle Height='1' Color='#ccc' Alignment='Top'/>
-    </Panel>
-    
-    <ux:Include File='Content.ux'/>
-    
-    <!-- <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
+<Panel>
+    <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
         <AddingAnimation>
             <Move Y='{= height({this})}' Duration='.7' Easing='ExponentialIn'/>
         </AddingAnimation>
@@ -115,7 +95,5 @@
         <WhileTrue ux:Name='finishLoading' Value='false'>
             <Change loadingScale.Factor='3' Duration='.5'/>
         </WhileTrue>
-    </Circle> -->
-
-    <Image File='bg.jpg' StretchMode='Fill'/>
-</App>
+    </Circle>
+</Panel>

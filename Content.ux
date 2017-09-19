@@ -1,0 +1,80 @@
+<StackPanel Color='#fff' ux:Name='Container'>
+    <Panel ux:Class='Detail' Margin='0,20,0,0'>
+        <string ux:Property='PersonName'/>
+        <string ux:Property='IndicatorColor'/>
+        <string ux:Property='Status'/>
+        <Rectangle Height='20' Width='2' Alignment='TopLeft' Color='{ReadProperty IndicatorColor}'/>
+        <Text Value='{ReadProperty PersonName}' FontSize='14' Font='Bold' Margin='10,0'/>
+        <Text Value='13 Apr 2017 10:13 AM' Color='#b4b2bc' Font='Bold' FontSize='12' Margin='10,0' Alignment='Right'/>
+        <Text Value='{ReadProperty Status}' FontSize='12' Color='#b4b2bc' Font='Bold' Margin='10,35,10,10'/>
+        <Text Value='$2348.85' FontSize='12' Margin='10,35,10,10' Font='Bold' Alignment='Right'/>
+        <Rectangle Color='#e6cdff' Height='1' Margin='10,0' Alignment='Bottom'>
+            <DropShadow Size="2" Distance="2" Spread="0.2" Color="#f2f2ff" Angle="90" />
+        </Rectangle>
+    </Panel>
+    <Panel Height='200' Margin='10, 0' Padding='25'>
+        <AddingAnimation>
+            <Move Y='{= height(Container)}' Duration='.7' Easing='ExponentialIn'/>
+        </AddingAnimation>
+        <Image File='bg.jpg' StretchMode='UniformToFill' Layer='Background' ContentAlignment='Top'/>
+        <StackPanel>
+            <Panel>
+                <Circle Width='30' Height='30' Color='#fff' Alignment='Left'/>
+                <StackPanel Margin='40,0,0,0'>
+                    <Text Color='#fff' Value='Mikes Pizza Rest,LLC.' FontSize='14'/>
+                    <Text Color='#ccc' Value='S384263949939' FontSize='10'/>
+                </StackPanel>
+            </Panel>
+            <Text Color='#fff' Value='TOTAL AMOUNT PAID TO DATE' FontSize='14' Margin='0,20,0,10'/>
+            <Text Color='#fff' Value='$43,785.00' FontSize='32'/>
+        </StackPanel>
+        <Rectangle Color='#fff' Width='90%' Height='40' Alignment='Bottom' CornerRadius='50' Y='35'>
+            <Shadow Size="10" />
+            <Text Value='COMPLETION DATE' Alignment='CenterLeft' Margin='30, 0' FontSize='11'/>
+            <Text Value='04.10.2017' Alignment='CenterRight' Margin='0,0,30,0' FontSize='11' Font='Bold'/>
+        </Rectangle>
+    </Panel>
+
+    <Grid RowCount="1" ColumnCount="3" CellSpacing='10' Margin='10,50,10,0' Height='65'>
+        <AddingAnimation>
+            <Move Y='{= height(Container) / 2}' Duration='.7' DelayBack='.1' Easing='ExponentialIn'/>
+        </AddingAnimation>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$3500.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='AMOUNT FUNDED' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#83dbd2" />
+                <GradientStop Offset="1" Color="#62d0b9" />
+            </LinearGradient>
+        </Rectangle>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$3,70.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='BALANCE' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#c88ffe" />
+                <GradientStop Offset="1" Color="#8666f1" />
+            </LinearGradient>
+        </Rectangle>
+        <Rectangle CornerRadius='5' Padding='0, 15'>
+            <Text Alignment='TopCenter' Value='$48,50.00' Color='#fff' Font='Bold' FontSize='14'/>
+            <Text Alignment='BottomCenter' Value='PAYBACK AMOUNT' Color='#fff' FontSize='10'/>
+            <LinearGradient AngleDegrees="360">
+                <GradientStop Offset="0" Color="#fbab99" />
+                <GradientStop Offset="1" Color="#f17a8f" />
+            </LinearGradient>
+        </Rectangle>
+    </Grid>
+
+    <StackPanel Margin='20, 30'>
+        <AddingAnimation>
+            <Move Y='{= height(Container) / 2}' Duration='.7' DelayBack='.2' Easing='ExponentialIn'/>
+        </AddingAnimation>
+        <Panel>
+            <Text Value='LATEST HISTORY' Color='#b4b2bc' FontSize='11' Font='Bold'/>
+            <Text Value='SHOW ALL' Color='#4db1f9' FontSize='11' Font='Bold' Alignment='CenterRight'/>
+        </Panel>
+        <Detail PersonName='Ricky Bass' Status='Pending' IndicatorColor='#fcce18'/>
+        <Detail PersonName='Katie Roy' Status='DENIED' IndicatorColor='#ec1d1f'/>
+        <Detail PersonName='Olive Kawer' Status='Completed' IndicatorColor='#2fb634'/>
+    </StackPanel>
+</StackPanel>
