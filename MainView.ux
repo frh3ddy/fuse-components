@@ -1,21 +1,7 @@
 <App>
+    <iOS.StatusBarConfig Style="Light" Animation="Slide" IsVisible="False" />
     <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
-    <Panel Alignment='Bottom' Color='#fff' Height='49'>
-        <Grid RowCount="1" ColumnCount="5">
-            <Image File='rotate-ccw@3x.png' Color='#489afa' Height='20'/>
-            <Image File='file@3x.png' Color='#bbbbca' Height='20'/>
-            <Circle ux:Name='Add' Color='#489afa' Padding='15'>
-                <Stroke Width='1' Color='#fff'/>
-                <DropShadow Size="15" Distance="7" Spread="0.01" Color="#bbbbca" Angle="90" />
-                <Translation Y='0 - height(Add) / 3'/>
-                <Image File='plus@3x.png'/>
-            </Circle>
-            <Image File='message@3x.png' Color='#bbbbca' Height='20'/>
-            <Image File='settings@3x.png' Color='#bbbbca' Height='22'/>
-        </Grid>
-        <Rectangle Height='1' Color='#ccc' Alignment='Top'/>
-    </Panel>
     
     <ux:Include File='Content.ux'/>
     
