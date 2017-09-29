@@ -3,105 +3,11 @@
     <FileImageSource ux:Global="checkMark" File="check@3x.png" />
     <JavaScript File="./.js-compiled/MainView.js" />
     
-    <ux:Include File='Content.ux'/>
+    <PageControl ux:Name='root' Active="Auth" Interaction='None'>
+        <NavigationMotion GotoDuration='0'/>
+        <ux:Include File='Content.ux'/>
+        <ux:Include File='Login.ux'/>
+    </PageControl>
     
-    <!-- <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
-        <AddingAnimation>
-            <Move Y='{= height({this})}' Duration='.7' Easing='ExponentialIn'/>
-        </AddingAnimation>
-        <Rectangle Layer='Background' Color='#fff' CornerRadius='10'/>
-        <Shadow Size="10" />
-        <Clicked>
-            <Set createHeader.Opacity='1'/>
-            <Set createCondition.Value='false'/>
-            <Set signCondition.Value='true'/>
-            <BringToFront/>
-        </Clicked>
-        <WhileTrue ux:Name='signCondition' Value='true'>
-            <Change  signScale.Factor='1' Duration='.5' Easing='QuarticOut' EasingBack='QuarticIn'/>
-        </WhileTrue>
-        <Scaling ux:Name='signScale' Factor='.9'/>
-        
-        <StackPanel>
-            <Text Margin='20, 30, 20, 20' FontSize='22'>SIGN IN</Text>
-            <Text Margin='20, 20, 20, 5' FontSize='11'>EMAIL</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
-                <Stroke Color='#dbddf2'/>
-            </Rectangle>
-            <Text Margin='20, 20, 20, 5' FontSize='11'>PASSWORD</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
-                <Stroke Color='#dbddf2'/>
-                <StackPanel Orientation='Horizontal' Alignment='Right'>
-                    <Image File='eye.png' Width='15' Color='#d5d5d9'/>
-                    <Text Alignment='VerticalCenter' Color='#c5c5c5' FontSize='10' Margin='5,0,10,0'>show</Text>
-                </StackPanel>
-            </Rectangle>
-            <Text Color='#4577ff' Value='Forgot password?' Alignment='Right' FontSize='12' Margin='0,20,20,0'/>
-            <Text Margin='30' FontSize='16' Alignment='Center' Color='#2937d9'>
-                <Clicked>
-                    <Set signIn.Visibility='Collapsed'/>
-                    <Set createNew.Visibility='Collapsed'/>
-                    <Set loadingCondition.Value='true'/>
-                    <Set loadingCondition.Value='false' Delay='1.4'/>
-                    <Set finishLoading.Value='true' Delay='1.4'/>
-                </Clicked>
-                SIGN IN
-            </Text>
-        </StackPanel>
-    </Panel>
-
-    <Panel ux:Name='createNew' Height='370' Margin='15, 150, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
-        <AddingAnimation>
-            <Move Y='{= height({this})}' Duration='1' Delay='.3' Easing='ExponentialIn'/>
-        </AddingAnimation>
-        <Shadow Size="10" />
-        <Clicked>
-            <Set createHeader.Opacity='0'/>
-            <BringToFront/>
-            <Set createCondition.Value='true'/>
-            <Set signCondition.Value='false'/>
-        </Clicked>
-        <WhileTrue ux:Name='createCondition' Value='false'>
-            <Change  scale.Factor='1' Duration='.5' Easing='QuarticOut' EasingBack='QuarticIn'/>
-        </WhileTrue>
-        <Scaling ux:Name='scale' Factor='.9'/>
-        <Rectangle Layer='Background' Color='#fff' CornerRadius='10'/>
-        <Text ux:Name='createHeader' Margin='0,17' FontSize='16' Alignment='BottomCenter'>CREATE NEW </Text>
-        <StackPanel>
-            <Text Margin='20, 25, 20, 20' FontSize='22'>CREATE NEW</Text>
-            <Text Margin='20, 0, 20, 5' FontSize='11'>EMAIL</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
-                <Stroke Color='#dbddf2'/>
-            </Rectangle>
-            <Text Margin='20, 20, 20, 5' FontSize='11'>PASSWORD</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
-                <Stroke Color='#dbddf2'/>
-                <StackPanel Orientation='Horizontal' Alignment='Right'>
-                    <Image File='eye.png' Width='15' Color='#d5d5d9'/>
-                    <Text Alignment='VerticalCenter' Color='#c5c5c5' FontSize='10' Margin='5,0,10,0'>show</Text>
-                </StackPanel>
-            </Rectangle>
-            <Text Margin='20, 20, 20, 5' FontSize='11'>RE-ENTER PASSWORD</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
-                <Stroke Color='#dbddf2'/>
-                <StackPanel Orientation='Horizontal' Alignment='Right'>
-                    <Image File='eye.png' Width='15' Color='#d5d5d9'/>
-                    <Text Alignment='VerticalCenter' Color='#c5c5c5' FontSize='10' Margin='5,0,10,0'>show</Text>
-                </StackPanel>
-            </Rectangle>
-        </StackPanel>
-    </Panel>
-    <Circle  ux:Name="loading" Width="70%" Color='#fff' Opacity='0' >
-        <DropShadow Size="15" Distance="10" Spread="0.01" Color="#0008" Angle="90" />
-        <Scaling ux:Name='loadingScale' Factor='1'/>
-        <WhileTrue ux:Name='loadingCondition' Value='false'>
-            <Set loading.Opacity='1'/>
-            <Cycle Target="loading.Width" Low="30" High="80" Frequency=".9" ProgressOffset='1'/>
-        </WhileTrue >
-        <WhileTrue ux:Name='finishLoading' Value='false'>
-            <Change loadingScale.Factor='3' Duration='.5'/>
-        </WhileTrue>
-    </Circle> -->
-
     <Image File='bg.jpg' StretchMode='Fill'/>
 </App>

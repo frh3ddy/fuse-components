@@ -1,4 +1,11 @@
-<Panel>
+<Panel Name='Auth'>
+    <WhileInactive>
+        <Set loading.Opacity='0'/>
+        <Set signIn.Visibility='Visible'/>
+        <Set createNew.Visibility='Visible'/>
+        <Set timeline.TargetProgress="0"/>
+    </WhileInactive>
+    <WhileActive>
     <Panel ux:Name='signIn' Height='350' Margin='15, 80, 15, 0' Alignment='Top' TransformOrigin='Anchor'>
         <AddingAnimation>
             <Move Y='{= height({this})}' Duration='.7' Easing='ExponentialIn'/>
@@ -17,27 +24,56 @@
         <Scaling ux:Name='signScale' Factor='.9'/>
         
         <StackPanel>
+            <JavaScript>
+                var Observable = require('FuseJS/Observable')
+                var hidePassword = Observable(true)
+                var passwordButtonText = Observable('show')
+
+                function passwordVisibility() {
+                    hidePassword.value = !hidePassword.value
+                    if (hidePassword.value === true) {
+                        passwordButtonText.value = 'show'
+                    } else {
+                        passwordButtonText.value = 'hide'
+                    }
+                }
+
+                module.exports = {
+                    passwordButtonText: passwordButtonText,
+                    hidePassword: hidePassword,
+                    passwordVisibility: passwordVisibility
+                }
+            </JavaScript>
             <Text Margin='20, 30, 20, 20' FontSize='22'>SIGN IN</Text>
             <Text Margin='20, 20, 20, 5' FontSize='11'>EMAIL</Text>
-            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
+            <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0' Padding='10,0,10,0'>
                 <Stroke Color='#dbddf2'/>
+                <TextInput AutoCorrectHint='Disabled' InputHint='Email'/>
             </Rectangle>
             <Text Margin='20, 20, 20, 5' FontSize='11'>PASSWORD</Text>
             <Rectangle Height='40' CornerRadius='3' Margin='22,0,20,0'>
                 <Stroke Color='#dbddf2'/>
-                <StackPanel Orientation='Horizontal' Alignment='Right'>
+                <TextInput ux:Name='pass' AutoCorrectHint='Disabled' IsPassword='{hidePassword}' Margin='10,0,60,0'>
+                    <WhileContainsText>
+                        <Change signInScaling.Factor='1' Duration='.5' />
+                    </WhileContainsText>
+                </TextInput>
+                <StackPanel Orientation='Horizontal' Alignment='Right' HitTestMode='LocalBounds'>
+                    <Clicked Handler='{passwordVisibility}'>
+                        <GiveFocus Target='pass'/>
+                    </Clicked>
                     <Image File='eye.png' Width='15' Color='#d5d5d9'/>
-                    <Text Alignment='VerticalCenter' Color='#c5c5c5' FontSize='10' Margin='5,0,10,0'>show</Text>
+                    <Text Alignment='VerticalCenter' Color='#c5c5c5' FontSize='10' Margin='5,0,10,0'>{passwordButtonText}</Text>
                 </StackPanel>
             </Rectangle>
             <Text Color='#4577ff' Value='Forgot password?' Alignment='Right' FontSize='12' Margin='0,20,20,0'/>
             <Text Margin='30' FontSize='16' Alignment='Center' Color='#2937d9'>
+                <Scaling ux:Name='signInScaling' Factor='0'/>
                 <Clicked>
                     <Set signIn.Visibility='Collapsed'/>
                     <Set createNew.Visibility='Collapsed'/>
-                    <Set loadingCondition.Value='true'/>
-                    <Set loadingCondition.Value='false' Delay='1.4'/>
-                    <Set finishLoading.Value='true' Delay='1.4'/>
+                    <Set timeline.TargetProgress="1" />
+                    <Set root.Active='Content' Delay='2.7'/>
                 </Clicked>
                 SIGN IN
             </Text>
@@ -88,12 +124,18 @@
     <Circle  ux:Name="loading" Width="70%" Color='#fff' Opacity='0' >
         <DropShadow Size="15" Distance="10" Spread="0.01" Color="#0008" Angle="90" />
         <Scaling ux:Name='loadingScale' Factor='1'/>
-        <WhileTrue ux:Name='loadingCondition' Value='false'>
-            <Set loading.Opacity='1'/>
-            <Cycle Target="loading.Width" Low="30" High="80" Frequency=".9" ProgressOffset='1'/>
-        </WhileTrue >
-        <WhileTrue ux:Name='finishLoading' Value='false'>
-            <Change loadingScale.Factor='3' Duration='.5'/>
-        </WhileTrue>
+        <Timeline ux:Name="timeline">
+            <Change Target="loadingScale.Factor" Easing='BounceIn'>
+                <Keyframe Value=".35" Time="0.4"/>
+                <Keyframe Value="1" Time="0.8"/>
+                <Keyframe Value=".35" Time="1.2"/>
+                <Keyframe Value="1" Time="1.6"/>
+                <Keyframe Value=".35" Time="2"/>
+                <Keyframe Value="1" Time="2.4"/>
+                <Keyframe Value="3" Time="2.8"/>
+            </Change>
+            <Change loading.Opacity='1'/>
+        </Timeline>
     </Circle>
+    </WhileActive>
 </Panel>
